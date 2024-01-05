@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center titulo">
+      Inclinometro
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarAcerca()">
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- Imagen en el lado izquierdo -->
+      <ion-col size="6">
+        <!-- Contenedor principal -->
+        <div class="image-container">
+          <!-- Imagen de fondo (medidor) -->
+          <img src="assets/medidor.png" alt="Medidor" class="background-image">
+
+          <!-- Imagen superpuesta (coche frontal) -->
+          <img id="frontalImage" src="assets/auto_frontal.png" alt="Coche Frontal" class="overlay-image rotate"
+            [style.transform]="'rotate(' + inclinacionFrontal + 'deg)'">
+
+          <!-- Texto debajo de las imágenes -->
+          <div class="caption caption-bold" style="top: 80%;">Inclinación Frontal:</div>
+          <div class="caption" style="top: 83%;">{{ inclinacionFrontal }}</div>
+        </div>
+      </ion-col>
+
+      <!-- Imagen en el lado derecho -->
+      <ion-col size="6">
+        <!-- Contenedor principal -->
+        <div class="image-container">
+          <!-- Imagen de fondo (medidor) -->
+          <img src="assets/medidor.png" alt="Medidor 2" class="background-image">
+
+          <!-- Imagen superpuesta (coche frontal) -->
+          <img id="lateralImage" src="assets/auto_lateral.png" alt="Coche Lateral" class="overlay-image rotate lat"
+            [style.transform]="'rotate(' + inclinacionLateral + 'deg)'">
+
+          <!-- Texto debajo de las imágenes -->
+          <div class="caption caption-bold" style="top: 80%;">Inclinación Lateral:</div>
+          <div class="caption" style="top: 83%;">{{ inclinacionLateral }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
