@@ -110,15 +110,20 @@ export class HomePage {
   // Método para mostrar la alerta "Acerca"
   async mostrarAcerca() {
     Swal.fire({
+      position:'center',
       title: "Universidad Politecnica Salesiana",
-      html: "Trabajo de Titulacion de la Carrera de Ciencias de la Computación<br/>Programado por:<br/>José Quinde<br/>Tonny Lema",
+      html: '<div class="custom-swal-text">Trabajo de Titulacion de la Carrera de Ciencias de la Computación<br/>Programado por:<br/>José Quinde<br/>Tonny Lema</div>',
       imageUrl: "assets/logo_cloud.png",
-      imageWidth: 200,
+      imageWidth: 65,
       background: '#222428', // Establece el fondo del alert como negro
       imageAlt: "Custom image",
       confirmButtonColor: '#3880ff', // Establece el color de fondo del botón a negro
       heightAuto: false,
-      color: "#ffffff"
+      color: "#ffffff",
+      customClass: {
+        container:'custom-swal-size',
+      },
+      
     });
   }
   resetear(){
