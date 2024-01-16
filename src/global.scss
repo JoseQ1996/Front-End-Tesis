@@ -24,3 +24,16 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+:root {
+    --ion-color-scheme: dark;
+  }
+  .swal2-title,
+  .swal2-text,
+  .swal2-confirm {
+    font-family: 'Agency FB', sans-serif !important;
+    color: #ffffff !important; /* Color de texto blanco */
+  }
+  body, ion-title, ion-button, ion-item, .titulo {
+    font-family: 'Agency FB', sans-serif;
+  }

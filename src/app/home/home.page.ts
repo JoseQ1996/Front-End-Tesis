@@ -2,6 +2,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 // Importar environment
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +23,7 @@ export class HomePage {
   alertaMostrada = false;
 
 
-  constructor(private http: HttpClient, private alertController: AlertController) { }
+  constructor(private http: HttpClient, private alertController: AlertController, private menuController: MenuController) { }
 
   ionViewWillEnter() {
     // Llamada inicial para obtener datos al cargar la página
@@ -46,6 +48,12 @@ export class HomePage {
     }
   }
 
+  abrirMenu() {
+    console.log('Abriendo menú...');
+    this.menuController.open('first-menu')
+  }
+
+
   // Método para conmutar entre redes
   async conmutarRed() {
     try {
@@ -62,7 +70,10 @@ export class HomePage {
   // Método para detectar la presencia de la red del ESP32
   async detectarRedESP32(): Promise<boolean> {
     try {
-      const response = await this.http.get(environment.apiUrl+"gyro").toPromise();
+      const response = await fetch(environment.apiUrl+"gyro");
+      const data=await response.json()
+      //console.log(environment.apiUrl)
+      //console.log(data)
       return true;
     } catch (error) {
       return false;
@@ -98,14 +109,29 @@ export class HomePage {
 
   // Método para mostrar la alerta "Acerca"
   async mostrarAcerca() {
-    const alert = await this.alertController.create({
-      header: 'Acerca',
-      subHeader: 'Realizado por',
-      message: `José Quinde-Tonny Lema`,
-      buttons: ['OK']
+    Swal.fire({
+      title: "Universidad Politecnica Salesiana",
+      html: "Programado por:<br/>Jose Quinde<br/>Tonny Lema",
+      imageUrl: "assets/logo_cloud.png",
+      imageWidth: 200,
+      
+      background: '#222428', // Establece el fondo del alert como negro
+      imageAlt: "Custom image",
+      confirmButtonColor: '#3880ff', // Establece el color de fondo del botón a negro
+      heightAuto: false,
+      color: "#ffffff"
     });
-
-    await alert.present();
+  }
+  resetear(){
+    console.log('Hiciste clic en Reset');
+  this.http.get(environment.apiUrl + "reset").subscribe(
+    (data) => {
+      console.log('Respuesta del servidor:', data);
+    },
+    (error) => {
+      console.error('Error al hacer reset:', error);
+    }
+  );
   }
   
 

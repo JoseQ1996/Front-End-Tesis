@@ -8,8 +8,8 @@
 /* Estilos para la imagen de fondo */
 .background-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 90%;
+  object-fit: auto;
   position: absolute;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@
 
 /* Estilos para la imagen superpuesta */
 .overlay-image {
-  opacity: 0.7;
+  opacity: 1;
   width: 40%;
   height: auto;
   position: absolute;
@@ -36,7 +36,8 @@
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 18px;
+  font-size: 30px;
+  font-family: 'Agency FB', sans-serif;
 }
 
 /* Estilos para texto debajo de las imágenes con negrita */
@@ -52,15 +53,19 @@
 }
 
 .overlay-image.rotate {
-  top: 35%;
-  left: 30%;
+  top: 30%;
+  left: 29%;
   transform-origin: center center;
 }
 .overlay-image.rotate.lat {
-  top: 43%;
-  left: 30%;
+  top: 35%;
+  left: 25%;
+  width: 50%;
   transform-origin: center center;
 }
 .titulo {
   font-weight: bold;
+  font-family: 'Agency FB', sans-serif;
+  font-size: 30px;
 }
+
