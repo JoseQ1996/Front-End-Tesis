@@ -39,10 +39,10 @@ export class HomePage {
     const inclinacionLateralNum = parseFloat(this.inclinacionLateral);
 
     if (!isNaN(inclinacionFrontalNum) && !isNaN(inclinacionLateralNum)) {
-      if ((inclinacionFrontalNum > 40 || inclinacionLateralNum > 40) && !this.alertaMostrada) {
+      if ((inclinacionFrontalNum > 30 || inclinacionLateralNum > 30||inclinacionFrontalNum < -30||inclinacionLateralNum < -30) && !this.alertaMostrada) {
         this.mostrarAlertaPeligro();
         this.alertaMostrada = true; // Marcar que la alerta ha sido mostrada
-      } else if (inclinacionFrontalNum <= 40 && inclinacionLateralNum <= 40) {
+      } else if (inclinacionFrontalNum <= 30 && inclinacionLateralNum <= 30 && inclinacionFrontalNum >= -30 && inclinacionLateralNum >= -30) {
         this.alertaMostrada = false; // Reiniciar la marca si los ángulos vuelven a niveles seguros
       }
     }
@@ -111,10 +111,9 @@ export class HomePage {
   async mostrarAcerca() {
     Swal.fire({
       title: "Universidad Politecnica Salesiana",
-      html: "Programado por:<br/>Jose Quinde<br/>Tonny Lema",
+      html: "Trabajo de Titulacion de la Carrera de Ciencias de la Computación<br/>Programado por:<br/>José Quinde<br/>Tonny Lema",
       imageUrl: "assets/logo_cloud.png",
       imageWidth: 200,
-      
       background: '#222428', // Establece el fondo del alert como negro
       imageAlt: "Custom image",
       confirmButtonColor: '#3880ff', // Establece el color de fondo del botón a negro
@@ -139,7 +138,7 @@ export class HomePage {
   async mostrarAlertaPeligro() {
     const alert = await this.alertController.create({
       header: '¡PELIGRO!',
-      message: 'La inclinación es mayor a 40 grados. ¡Precaución!',
+      message: 'La inclinación es mayor a 30 grados. ¡Precaución!',
       buttons: ['OK']
     });
 
@@ -148,7 +147,7 @@ export class HomePage {
 
   // Métodos para actualizar la inclinación frontal y lateral
   actualizarInclinacionFrontal(nuevoValorFrontal: number) {
-    this.inclinacionFrontal = this.calcularRotacion(nuevoValorFrontal);
+    this.inclinacionFrontal = this.calcularRotacion(-1*nuevoValorFrontal);
     this.verificarPeligro();
   }
 
