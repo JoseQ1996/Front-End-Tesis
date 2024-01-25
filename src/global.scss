@@ -25,9 +25,7 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-:root {
-    --ion-color-scheme: dark;
-  }
+
   .swal2-title,
   .swal2-text,
   .swal2-confirm {
@@ -37,11 +35,11 @@
   body, ion-title, ion-button, ion-item, .titulo {
     font-family: 'Agency FB', sans-serif;
   }
-  ion-app {
+  /*ion-app {
     max-width: 1024px;
-    max-height: 600px;
+    max-height: 768px;
     margin: auto;
-  }
+  }*/
  /* Estilos para el tamaño del SweetAlert2 */
 .custom-swal-size {
   position: fixed;
@@ -52,6 +50,7 @@
   max-height: 400px; /* Alto máximo personalizado para el contenido */
  
 }
+
 /* Estilos para el tamaño del texto dentro del SweetAlert2 */
 .custom-swal-text {
   font-size: 10px; /* Tamaño de fuente personalizado */

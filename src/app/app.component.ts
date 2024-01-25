@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, NgZone } from '@angular/core';
 import { NavController, LoadingController } from '@ionic/angular';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,24 @@ import { NavController, LoadingController } from '@ionic/angular';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private navCtrl: NavController, private loadingCtrl: LoadingController) {}
+  constructor(
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController,
+    private zone: NgZone,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   async ngOnInit() {
+    // Configurar el modo oscuro predeterminado
+    this.toggleDarkMode(true);
+
     const loading = await this.loadingCtrl.create({
       spinner: 'circles',
-      message: 'Bienvenido', // Puedes personalizar tu mensaje de bienvenida aquí
+      message: 'Bienvenido',
       translucent: true,
       cssClass: 'custom-loading'
     });
-
+   
     await loading.present();
 
     setTimeout(() => {
@@ -25,5 +34,14 @@ export class AppComponent implements OnInit {
       this.navCtrl.navigateRoot('/home');
     }, 1000);
   }
-}
 
+  // Función para cambiar el modo oscuro
+  private toggleDarkMode(enableDarkMode: boolean): void {
+    const body = this.document.body;
+    if (enableDarkMode) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+  }
+}

@@ -1,32 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center titulo">
-      Inclinometro
-    </ion-title>
-      <ion-buttons slot="end">
-        <ion-button id="popover-button">
-          <ion-icon name="settings"></ion-icon>
-        </ion-button>
-        <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-          <ng-template>
-            <ion-content>
-              <ion-list>
-                <ion-item [button]="true" [detail]="false" (click)="resetear()">Reset</ion-item>
-                <ion-item [button]="true" [detail]="false"(click)="mostrarAcerca()">Acerca De</ion-item>
-                <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-                  <ng-template>
-                    <ion-content>
-                      <ion-list>
-                        <ion-item [button]="true" [detail]="false">Nested option</ion-item>
-                      </ion-list>
-                    </ion-content>
-                  </ng-template>
-                </ion-popover>
-              </ion-list>
-            </ion-content>
-          </ng-template>
-        </ion-popover>
-      </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button id="popover-button">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+        <ng-template>
+          <ion-content>
+            <ion-list>
+              <ion-item [button]="true" [detail]="false" (click)="resetear()">Reset</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="mostrarAcerca()">Acerca De</ion-item>
+              <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
+                <ng-template>
+                  <ion-content>
+                    <ion-list>
+                      <ion-item [button]="true" [detail]="false">Nested option</ion-item>
+                    </ion-list>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -38,15 +36,17 @@
         <!-- Contenedor principal -->
         <div class="image-container">
           <!-- Imagen de fondo (medidor) -->
-          <img src="assets/fondo.png" alt="Medidor" class="background-image">
+          <img id="fondoDerecho" [src]="fondoDerechoSrc" alt="Fondo Derecho" class="background-image_left">
 
-          <!-- Imagen superpuesta (coche frontal) -->
-          <img id="frontalImage" src="assets/carro_frontal.png" alt="Coche Frontal" class="overlay-image rotate"
-            [style.transform]="'rotate(' + inclinacionFrontal + 'deg)'">
+          <!-- Imagen superpuesta (coche Lateral) -->
+          <img id="lateralImage" src="assets/carro_lateral.png" alt="Coche Lateral" class="overlay-image rotate lat"
+            [style.transform]="'rotate(' + inclinacionLateral + 'deg)'">
 
           <!-- Texto debajo de las imágenes -->
-          <div class="caption caption-bold" style="top: 70%;">Pitch :</div>
-          <div class="caption" style="top: 73%;">{{ inclinacionFrontal }}</div>
+          <div class="caption_title caption-bold" style="top: 0%;">Roll</div>
+          <div class="caption" style="top: 87%;">{{ inclinacionLateral }}</div>
+
+
         </div>
       </ion-col>
 
@@ -55,20 +55,19 @@
         <!-- Contenedor principal -->
         <div class="image-container">
           <!-- Imagen de fondo (medidor) -->
-          <img src="assets/fondo.png" alt="Medidor 2" class="background-image">
+          <img id="fondoIzquiedo" [src]="fondoIzquierdoSrc" alt="Fondo Izquierdo" class="background-image_right">
+
 
           <!-- Imagen superpuesta (coche frontal) -->
-          <img id="lateralImage" src="assets/carro_lateral.png" alt="Coche Lateral" class="overlay-image rotate lat"
-            [style.transform]="'rotate(' + inclinacionLateral + 'deg)'">
+          <img id="frontalImage" src="assets/carro_frontal.png" alt="Coche Frontal" class="overlay-image rotate"
+            [style.transform]="'rotate(' + inclinacionFrontal + 'deg)'">
 
           <!-- Texto debajo de las imágenes -->
-          <div class="caption caption-bold" style="top: 70%;">Roll:</div>
-          <div class="caption" style="top: 73%;">{{ inclinacionLateral }}</div>
+          <div class="caption_title caption-bold" style="top: 0%;">Pitch </div>
+          <div class="caption_front" style="top: 87%;">{{ inclinacionFrontal }}</div>
+
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-
-
-
