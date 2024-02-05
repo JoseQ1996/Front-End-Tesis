@@ -41,7 +41,7 @@ export class HomePage {
     setInterval(() => {
       this.conmutarRed();
       this.verificarPeligro();
-    }, 100); // Actualizar cada 1 segundo
+    }, 90); // Actualizar cada 1 segundo
   }
   // Verificar si se supera el ángulo peligroso
   verificarPeligro() {
